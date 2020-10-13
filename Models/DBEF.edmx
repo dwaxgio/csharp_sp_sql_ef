@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SP_EFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ALUMNOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOCUMENTO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="APELLIDO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CORREO" Type="nvarchar(max)" />
+          <Property Name="FECHA_INGRESO" Type="datetime" Nullable="false" />
+          <Property Name="EDAD" Type="int" />
+          <Property Name="TELEFONO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CLASES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PROFESOR" Type="int" />
+          <Property Name="ID_MATERIA" Type="int" />
+          <Property Name="ID_SALON" Type="int" />
+        </EntityType>
+        <EntityType Name="MATERIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MATRICULAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CLASE" Type="int" />
+          <Property Name="ID_ALUMNO" Type="int" />
+          <Property Name="NOTA" Type="int" />
+          <Property Name="FECHA_NOTA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROFESORES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOCUMENTO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="APELLIDO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CORREO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SALONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_INSERTAR_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="documento" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="apellido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="correo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="edad" Type="int" Mode="In" />
+          <Parameter Name="telefono" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="SP_EFModelStoreContainer">
+          <EntitySet Name="ALUMNOS" EntityType="Self.ALUMNOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLASES" EntityType="Self.CLASES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATERIAS" EntityType="Self.MATERIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATRICULAS" EntityType="Self.MATRICULAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROFESORES" EntityType="Self.PROFESORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALONES" EntityType="Self.SALONES" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SP_EFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ALUMNOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DOCUMENTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_INGRESO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EDAD" Type="Int32" />
+          <Property Name="TELEFONO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CLASES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PROFESOR" Type="Int32" />
+          <Property Name="ID_MATERIA" Type="Int32" />
+          <Property Name="ID_SALON" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MATERIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MATRICULAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CLASE" Type="Int32" />
+          <Property Name="ID_ALUMNO" Type="Int32" />
+          <Property Name="NOTA" Type="Int32" />
+          <Property Name="FECHA_NOTA" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PROFESORES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DOCUMENTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SALONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SP_EFEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ALUMNOS" EntityType="Self.ALUMNOS" />
+          <EntitySet Name="CLASES" EntityType="Self.CLASES" />
+          <EntitySet Name="MATERIAS" EntityType="Self.MATERIAS" />
+          <EntitySet Name="MATRICULAS" EntityType="Self.MATRICULAS" />
+          <EntitySet Name="PROFESORES" EntityType="Self.PROFESORES" />
+          <EntitySet Name="SALONES" EntityType="Self.SALONES" />
+          <FunctionImport Name="SP_INSERTAR_ALUMNO">
+            <Parameter Name="documento" Mode="In" Type="String" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellido" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="edad" Mode="In" Type="Int32" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SP_EFModelStoreContainer" CdmEntityContainer="SP_EFEntities">
+          <EntitySetMapping Name="ALUMNOS">
+            <EntityTypeMapping TypeName="SP_EFModel.ALUMNOS">
+              <MappingFragment StoreEntitySet="ALUMNOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+                <ScalarProperty Name="EDAD" ColumnName="EDAD" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLASES">
+            <EntityTypeMapping TypeName="SP_EFModel.CLASES">
+              <MappingFragment StoreEntitySet="CLASES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_PROFESOR" ColumnName="ID_PROFESOR" />
+                <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+                <ScalarProperty Name="ID_SALON" ColumnName="ID_SALON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIAS">
+            <EntityTypeMapping TypeName="SP_EFModel.MATERIAS">
+              <MappingFragment StoreEntitySet="MATERIAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATRICULAS">
+            <EntityTypeMapping TypeName="SP_EFModel.MATRICULAS">
+              <MappingFragment StoreEntitySet="MATRICULAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_CLASE" ColumnName="ID_CLASE" />
+                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+                <ScalarProperty Name="NOTA" ColumnName="NOTA" />
+                <ScalarProperty Name="FECHA_NOTA" ColumnName="FECHA_NOTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROFESORES">
+            <EntityTypeMapping TypeName="SP_EFModel.PROFESORES">
+              <MappingFragment StoreEntitySet="PROFESORES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALONES">
+            <EntityTypeMapping TypeName="SP_EFModel.SALONES">
+              <MappingFragment StoreEntitySet="SALONES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_INSERTAR_ALUMNO" FunctionName="SP_EFModel.Store.SP_INSERTAR_ALUMNO" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
